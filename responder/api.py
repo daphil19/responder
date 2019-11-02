@@ -512,7 +512,14 @@ class API:
 
         assert self.static_dir is not None
 
-        index = (self.static_dir / "index.html").resolve()
+        # HACK this is a specific backport so that files that index.html requires can also be
+        # served correctly in the current version. It only works for our specific use case
+
+        # if we are not requesting the static endpoint, use whatever resource is requested
+        # otherwise, get index.html (we are in the static route)
+        path = req.url.path[1:] if req.url.path != '/' else 'index.html'
+
+        index = (self.static_dir / path).resolve()
         if os.path.exists(index):
             with open(index, "r") as f:
                 resp.html = f.read()
