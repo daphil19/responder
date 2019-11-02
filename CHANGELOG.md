@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v1.3.3] - 2019-11-02
+### Added
+- Localized fix for static files
+
 ## [v1.3.2] - 2019-08-15
 ### Added
 - ASGI 3 support
